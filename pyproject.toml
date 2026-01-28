@@ -1,0 +1,28 @@
+[project]
+name = "pylings"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4>=4.14.3",
+    "fastapi>=0.128.0",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.1",
+    "ollama>=0.6.1",
+    "openai>=2.16.0",
+    "pandas>=3.0.0",
+    "pytest>=9.0.2",
+    "requests>=2.32.5",
+    "rich>=13.9.4",
+    "typer>=0.21.1",
+    "uvicorn>=0.40.0",
+    "watchdog>=6.0.0",
+]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project.scripts]
+pylings = "pylings.cli:app"
