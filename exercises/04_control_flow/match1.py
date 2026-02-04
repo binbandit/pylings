@@ -1,24 +1,50 @@
 """
-Concept: Match Case (Python 3.10+)
-`match` statements are a powerful way to branch logic based on the structure and value of data. It's similar to `switch` in other languages but more powerful.
+match1.py - Match Statements (Python 3.10+)
 
-Task: Add a `case 418:` block to handle the "I'm a teapot" status code.
+The `match` statement compares a value against patterns:
+
+    match value:
+        case pattern1:
+            # runs if value matches pattern1
+        case pattern2:
+            # runs if value matches pattern2
+        case _:
+            # wildcard - matches anything (like 'default' in other languages)
+
+This is similar to switch/case in other languages but more powerful.
+
+Your task: Add a case for HTTP status code 418 ("I'm a teapot").
+The case should print "I'm a teapot" when status is 418.
 """
 
-def main():
-    status = 418
-    
+
+def http_status(status):
     match status:
         case 200:
-            print("OK")
+            return "OK"
         case 404:
-            print("Not Found")
+            return "Not Found"
         case 500:
-            print("Internal Server Error")
-        # FIX ME: Add a case for 418 that prints "I'm a teapot"
+            return "Internal Server Error"
+        # TODO: Add a case for 418 that returns "I'm a teapot"
         case _:
-            print("Unknown status")
-            raise Exception("We need to handle the teapot!")
+            return "Unknown"
+
+
+def main():
+    # Test the existing cases
+    print(f"200: {http_status(200)}")
+    print(f"404: {http_status(404)}")
+
+    # Test the case you need to add
+    result = http_status(418)
+    print(f"418: {result}")
+
+    if result != "I'm a teapot":
+        raise Exception(f'Status 418 should return "I\'m a teapot", got "{result}"')
+
+    print("Match statement works!")
+
 
 if __name__ == "__main__":
     main()

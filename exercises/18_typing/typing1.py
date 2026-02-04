@@ -1,30 +1,65 @@
 """
 Concept: Type Hints (Function Signatures)
-Type hints help document your code and allow static analysis tools (like mypy) to find bugs.
-Syntax: `def func(arg: Type) -> RetType:`
 
-Task: Add type hints to the `add` function so it accepts and returns integers.
+Type hints are annotations that document what types a function expects and returns.
+They help you catch bugs early and make your code self-documenting.
+
+Syntax:
+    def function_name(param: ParamType) -> ReturnType:
+        ...
+
+Example:
+    def greet(name: str) -> str:
+        return f"Hello, {name}!"
+
+Type hints are checked by tools like `mypy`, but Python itself doesn't enforce them
+at runtime. However, we can inspect them using `__annotations__`.
+
+Task:
+Add type hints to the `add` function:
+1. Parameter `a` should be type `int`
+2. Parameter `b` should be type `int`
+3. Return type should be `int`
 """
 
-# FIX ME: Add type hints to the function arguments and return value
-# def add(a: int, b: int) -> int:
-#     return a + b
 
+# TODO: Add type hints to the parameters and return type
+# Hint: def function(param: Type) -> ReturnType:
 def add(a, b):
     return a + b
 
+
 def main():
-    # We inspect annotations at runtime for this exercise
-    if not add.__annotations__:
-        raise Exception("Function 'add' is missing type hints!")
-        
-    if add.__annotations__.get("a") is not int:
-         raise Exception("Argument 'a' should be int")
-         
-    if add.__annotations__.get("return") is not int:
-         raise Exception("Return type should be int")
-         
-    print("Type hints found!")
+    # Test the function works correctly
+    result = add(3, 5)
+    if result != 8:
+        raise Exception(f"add(3, 5) should return 8, got {result}")
+
+    # Verify type hints exist
+    annotations = add.__annotations__
+
+    if not annotations:
+        raise Exception(
+            "No type hints found!\n"
+            "Add type hints to the 'add' function parameters and return type.\n"
+            "Example: def func(x: int) -> int:"
+        )
+
+    if annotations.get("a") is not int:
+        raise Exception(
+            "Parameter 'a' should have type hint 'int'\nExample: def add(a: int, ...)"
+        )
+
+    if annotations.get("b") is not int:
+        raise Exception(
+            "Parameter 'b' should have type hint 'int'\nExample: def add(..., b: int)"
+        )
+
+    if annotations.get("return") is not int:
+        raise Exception("Return type should be 'int'\nExample: def add(...) -> int:")
+
+    print("Type hints added correctly!")
+
 
 if __name__ == "__main__":
     main()

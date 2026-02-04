@@ -1,19 +1,33 @@
 """
-Concept: String Concatenation
-You can combine strings using the `+` operator.
+strings1.py - String Concatenation
 
-Task: Combine `hello` and `world` with a space in between.
+Strings can be combined (concatenated) using the `+` operator:
+
+    first = "Hello"
+    second = "World"
+    combined = first + second  # "HelloWorld"
+
+    # To add a space between:
+    combined = first + " " + second  # "Hello World"
+
+Your task: Combine `part1` and `part2` with a space between them to create
+"Hello World".
 """
+
 
 def main():
     part1 = "Hello"
     part2 = "World"
-    
-    # FIX ME: Concatenate part1 and part2 with a space in between!
-    result = part1 + part2
-    
+
+    # TODO: Concatenate part1 and part2 with a space between them
+    result = part1 + part2  # This gives "HelloWorld" - needs a space!
+
     if result != "Hello World":
-        raise Exception(f"Expected 'Hello World', got '{result}'")
+        raise Exception(f"Expected 'Hello World', got '{result}'. Add a space between!")
+
+    print(result)
+    print("String concatenation works!")
+
 
 if __name__ == "__main__":
     main()

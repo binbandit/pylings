@@ -1,40 +1,43 @@
 """
-Concept: Infinite Loops and Break
+while2.py - While True with Break
 
-What:
-- An "Infinite Loop" is a loop where the condition never becomes False (`while True`).
-- The `break` keyword immediately exits the nearest enclosing loop.
+Sometimes you want a loop that runs forever until something specific happens.
+Use `while True` with `break`:
 
-Why:
-Sometimes you *want* to loop forever (e.g., a game loop or a server listening for requests)
-until a specific event happens inside the loop (e.g., specific input or an error).
+    while True:
+        user_input = input("Command: ")
+        if user_input == "quit":
+            break  # Exit the loop
+        print(f"You typed: {user_input}")
 
-How:
-```python
-while True:
-    command = input("> ")
-    if command == "quit":
-        break  # Exit the loop immediately
-    print("You typed:", command)
-```
+This pattern is common for:
+- Game loops
+- Server request handlers
+- Interactive command prompts
 
-Task:
-The loop below runs forever (`while True`).
-Add a check inside the loop: if `counter` equals 10, stop the loop using `break`.
+Your task: The loop below runs forever. Add an if statement that breaks
+out of the loop when counter reaches 10.
 """
+
 
 def main():
     counter = 0
-    
+
     while True:
         counter += 1
-        
-        # FIX ME: Check if counter is 10, then break
-        if counter > 20: # Safety break to prevent actual infinite loop during test
-            raise Exception("Loop ran too long! Did you forget to break?")
-            
+
+        # TODO: If counter equals 10, break out of the loop
+
+        # Safety check (prevents actual infinite loop during testing)
+        if counter > 20:
+            raise Exception("Loop went past 20! Add 'if counter == 10: break'")
+
     if counter != 10:
-        raise Exception(f"Counter should be 10, got {counter}")
+        raise Exception(f"counter should be 10, got {counter}")
+
+    print(f"Broke out at counter = {counter}")
+    print("While True with break works!")
+
 
 if __name__ == "__main__":
     main()

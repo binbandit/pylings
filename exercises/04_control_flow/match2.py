@@ -1,38 +1,52 @@
 """
-Concept: Pattern Matching (Sequences)
-`match` can unpack sequences like lists or tuples. You can match specific structures.
+match2.py - Pattern Matching with Sequences
 
-Task: Add a case that matches a list with the single element "look": `case ["look"]`.
+Match can destructure sequences (lists, tuples) and bind variables:
+
+    match command:
+        case ["go", direction]:
+            print(f"Going {direction}")  # direction is extracted
+        case ["pick", "up", item]:
+            print(f"Picking up {item}")  # item is extracted
+        case [action, *rest]:
+            print(f"Action: {action}, args: {rest}")  # *rest captures remaining
+
+You can also match literal values in sequences:
+    case ["quit"]:
+        print("Goodbye!")  # matches exactly ["quit"]
+
+Your task: Add a case to handle the ["look"] command that returns "Looking around".
 """
 
-def main():
-    command = ["go", "north"]
-    
+
+def handle_command(command):
     match command:
         case ["go", direction]:
-            print(f"Going {direction}")
+            return f"Going {direction}"
+        case ["pick", "up", item]:
+            return f"Picked up {item}"
         case ["drop", *items]:
-            print(f"Dropping {len(items)} items")
-        # FIX ME: Add a case for ["look"] that prints "Looking around"
+            return f"Dropped {len(items)} item(s)"
+        # TODO: Add a case for ["look"] that returns "Looking around"
         case _:
-            print("Unknown command")
-            raise Exception("Command 'look' not handled!")
+            return "Unknown command"
+
+
+def main():
+    # Test existing patterns
+    print(handle_command(["go", "north"]))
+    print(handle_command(["pick", "up", "sword"]))
+    print(handle_command(["drop", "key", "coin"]))
+
+    # Test the pattern you need to add
+    result = handle_command(["look"])
+    print(result)
+
+    if result != "Looking around":
+        raise Exception(f'["look"] should return "Looking around", got "{result}"')
+
+    print("Pattern matching works!")
+
 
 if __name__ == "__main__":
-    # Simulate a command that isn't handled
-    # But wait, local vars are hard to mock from outside without modding file.
-    # I rely on the user editing the file.
-    # The file as written runs with command = ["go", "north"] which passes effectively.
-    # I must make it fail.
-    check_command(["look"])
-
-def check_command(command):
-    match command:
-        case ["go", direction]:
-            print(f"Going {direction}")
-        case ["drop", *items]:
-            print(f"Dropping {len(items)} items")
-        # FIX ME: Add case for ["look"]
-        case _:
-            print("Unknown command")
-            raise Exception(f"Command {command} not handled!")
+    main()

@@ -1,50 +1,74 @@
 """
 Concept: Environment Variables
 
-What:
-Environment variables are values set outside the program (in the OS or shell).
-In Python, we access them via `os.environ`, which acts like a dictionary.
+Environment variables are key-value pairs stored in your operating system's
+environment. Programs can read and write these variables.
 
-Why:
-**Security and Configuration.**
-Never hardcode passwords or API keys in your code! 
-Read them from environment variables so your code can be public (open source) while your secrets stay private.
+Why use environment variables?
+- Store configuration without hardcoding
+- Keep secrets (API keys, passwords) out of source code
+- Change behavior without modifying code
 
-How:
-```python
-import os
+How to use them in Python:
+    import os
 
-# Get a variable (returns None if missing, won't crash)
-api_key = os.getenv("API_KEY") 
+    # Set an environment variable (for current process only)
+    os.environ["MY_VAR"] = "my_value"
 
-# Get a variable (crashes if missing)
-# user = os.environ["USER"] 
+    # Get an environment variable (returns None if not found)
+    value = os.getenv("MY_VAR")
 
-# Set a variable (only for this process)
-os.environ["MY_VAR"] = "value"
-```
+    # Get with a default value
+    value = os.getenv("MY_VAR", "default")
+
+    # Get (raises KeyError if not found)
+    value = os.environ["MY_VAR"]
+
+Security tip:
+    Never hardcode secrets like API keys or passwords in your code!
+    Store them in environment variables and read them at runtime.
 
 Task:
-1. Set an environment variable named `APP_MODE` to "production".
-2. Retrieve it using `os.getenv` and assign it to `current_mode`.
+1. Set an environment variable named "APP_MODE" with value "production"
+2. Retrieve it using os.getenv() and store in `current_mode`
 """
 
 import os
 
+
 def main():
-    # FIX ME: Set APP_MODE to "production"
-    # os.environ["APP_MODE"] = "production"
-    
-    # FIX ME: Get APP_MODE
-    # current_mode = ...
-    current_mode = None
-    
+    # TODO: Set the environment variable APP_MODE to "production"
+    # Hint: os.environ["KEY"] = "value"
+
+    # TODO: Get the value of APP_MODE using os.getenv()
+    # Hint: os.getenv("KEY")
+    current_mode = None  # TODO: Replace with os.getenv(...)
+
+    # Verification
+    if current_mode is None:
+        raise AssertionError(
+            "current_mode is None!\n"
+            "Did you:\n"
+            "  1. Set os.environ['APP_MODE'] = 'production'?\n"
+            "  2. Retrieve it with current_mode = os.getenv('APP_MODE')?"
+        )
+
     if current_mode != "production":
-        raise Exception(f"Expected 'production', got '{current_mode}'")
-        
-    # Verify it is actually in environ
-    if os.environ.get("APP_MODE") != "production":
-        raise Exception("APP_MODE not found in os.environ")
+        raise AssertionError(
+            f"Expected current_mode to be 'production', but got '{current_mode}'"
+        )
+
+    # Double-check it's actually in the environment
+    env_value = os.environ.get("APP_MODE")
+    if env_value != "production":
+        raise AssertionError(
+            "APP_MODE is not set in os.environ!\n"
+            "Make sure to set os.environ['APP_MODE'] = 'production'"
+        )
+
+    print(f"APP_MODE = {current_mode}")
+    print("Successfully used environment variables!")
+
 
 if __name__ == "__main__":
     main()

@@ -1,54 +1,97 @@
 """
-Concept: Properties
-The `@property` decorator allows you to define methods that can be accessed like attributes. This is useful for getters and setters with validation logic.
+Concept: Properties (@property decorator)
 
-Task: Use `@property` to create a getter for `radius` and `@radius.setter` to ensure `radius` is positive.
+The `@property` decorator lets you define methods that behave like attributes.
+This is useful for:
+- Adding validation when setting values
+- Computing values on-the-fly (derived attributes)
+- Making attributes read-only
+
+How it works:
+```python
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius  # "private" backing field (convention)
+
+    @property
+    def celsius(self):
+        '''Getter: called when you access obj.celsius'''
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        '''Setter: called when you assign obj.celsius = value'''
+        if value < -273.15:
+            raise ValueError("Below absolute zero!")
+        self._celsius = value
+
+# Usage:
+t = Temperature(25)
+print(t.celsius)    # Calls the getter -> 25
+t.celsius = 30      # Calls the setter
+t.celsius = -300    # Raises ValueError!
+```
+
+Task:
+1. Create a `@property` getter for `radius` that returns `self._radius`
+2. Create a `@radius.setter` that validates radius > 0 (raise ValueError if not)
 """
+
 
 class Circle:
     def __init__(self, radius):
         self._radius = radius
-        
-    # FIX ME: Use @property to make 'radius' accessible
-    # @property
-    # def radius(self):
-    #     return self._radius
-    
-    # FIX ME: Add a setter to ensure radius > 0
-    # @radius.setter
+
+    # TODO: Add @property decorator and implement the getter
+    def radius(self):
+        pass  # FIX ME: Return self._radius
+
+    # TODO: Add @radius.setter decorator and implement validation
     # def radius(self, value):
-    #     if value <= 0: raise ValueError("Positive only!")
-    #     self._radius = value
-    
+    #     FIX ME: Check if value > 0, raise ValueError if not
+    #     FIX ME: Set self._radius = value
+
     def area(self):
-        return 3.14 * self._radius ** 2
+        return 3.14159 * self._radius**2
+
 
 def main():
     c = Circle(5)
-    
-    # Validation 1: Get property
+
+    # Test 1: Property getter works
     try:
         r = c.radius
-    except AttributeError:
-        raise Exception("Cannot access c.radius!")
-        
-    # Validation 2: Set property valid
+        if r != 5:
+            raise Exception(f"Expected radius=5, got {r}")
+    except TypeError:
+        raise Exception(
+            "c.radius is being called as a method, not a property!\n"
+            "Hint: Add the @property decorator above the radius method"
+        )
+
+    # Test 2: Property setter works
     try:
         c.radius = 10
-        if c._radius != 10: raise Exception("Setter didn't update backing field")
+        if c._radius != 10:
+            raise Exception("Setter didn't update the backing field _radius")
     except AttributeError:
-        raise Exception("Cannot set c.radius!")
-        
-    # Validation 3: Set property invalid
-    try:
-        c.radius = -1
-        raise Exception("Should have raised ValueError for negative radius")
-    except ValueError:
-        pass # Correct
-    except AttributeError:
-         raise Exception("Setter missing!")
+        raise Exception(
+            "Cannot set c.radius - setter is missing!\n"
+            "Hint: Add @radius.setter decorator for the setter method"
+        )
 
-    print("Properties passed!")
+    # Test 3: Validation rejects invalid values
+    try:
+        c.radius = -5
+        raise Exception(
+            "Setting radius=-5 should raise ValueError!\n"
+            "Hint: Add validation in the setter: if value <= 0: raise ValueError(...)"
+        )
+    except ValueError:
+        pass  # This is correct behavior!
+
+    print("Properties working correctly!")
+
 
 if __name__ == "__main__":
     main()

@@ -1,37 +1,44 @@
 """
-Concept: While Loops
+while1.py - While Loops
 
-What:
-A `while` loop repeatedly executes a block of code as long as a condition is True.
-It is like an "if" statement that repeats itself.
+The `while` loop runs as long as a condition is True:
 
-Why:
-Use `while` loops when you don't know exactly how many times you need to loop,
-but you know the condition for stopping (e.g., "keep asking until user types 'quit'").
+    count = 3
+    while count > 0:
+        print(count)
+        count -= 1  # IMPORTANT: must change the condition variable!
+    # Prints: 3, 2, 1
 
-How:
-```python
-count = 5
-while count > 0:
-    print(count)
-    count = count - 1 # VERY IMPORTANT: Update the condition variable!
-```
-If you forget to update the variable (like decreasing `count`), the loop will run forever (Infinite Loop).
+WARNING: If you forget to modify the condition variable, you'll create
+an infinite loop! Always make sure the loop can eventually end.
 
-Task:
-Write a while loop that prints `count` and decrements it by 1, until it reaches 0.
+Your task: Write a while loop that counts down from 5 to 1.
+The loop should:
+1. Print the current count
+2. Decrease count by 1
+3. Stop when count reaches 0
 """
+
 
 def main():
     count = 5
-    
-    # FIX ME: Use a while loop to print count and then decrement it
-    # while count > 0:
-    #     print(count)
-    #     count -= 1
-    
+    printed = []
+
+    # TODO: Write a while loop that:
+    # - continues while count > 0
+    # - appends count to printed
+    # - decrements count by 1
+
     if count != 0:
-        raise Exception(f"Count should be 0, but it is {count}. Did you use a loop?")
+        raise Exception(f"count should be 0 after the loop, got {count}")
+
+    expected = [5, 4, 3, 2, 1]
+    if printed != expected:
+        raise Exception(f"Should have printed {expected}, got {printed}")
+
+    print("Countdown:", printed)
+    print("While loops work!")
+
 
 if __name__ == "__main__":
     main()

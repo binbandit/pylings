@@ -1,11 +1,30 @@
 """
-Concept: Web Scraping (BeautifulSoup)
-BeautifulSoup parses HTML and allows you to navigate the DOM tree (e.g., `soup.title`, `soup.find_all('a')`).
+Concept: Web Scraping with BeautifulSoup
 
-Task: Parse the HTML to extract the title and the first link.
+BeautifulSoup is a library for parsing HTML and XML documents. It creates a
+parse tree that you can navigate, search, and modify.
+
+Key concepts:
+- `BeautifulSoup(html, 'html.parser')` - Create a soup object from HTML
+- `soup.title` - Access the <title> tag directly
+- `soup.title.string` - Get the text content of the title tag
+- `soup.find('tag')` or `soup.tag` - Find the first matching tag
+- `soup.find_all('tag')` - Find all matching tags (returns a list)
+- `tag['attribute']` - Access an attribute of a tag (e.g., href)
+
+Example:
+    soup = BeautifulSoup('<p class="intro">Hello</p>', 'html.parser')
+    paragraph = soup.find('p')
+    print(paragraph.string)  # "Hello"
+    print(paragraph['class'])  # ['intro']
+
+Task: Parse the provided HTML to:
+      1. Extract the title text (without the <title> tags)
+      2. Find the first <a> (anchor/link) tag
 """
 
 from bs4 import BeautifulSoup
+
 
 def main():
     html_doc = """
@@ -19,24 +38,38 @@ def main():
     and they lived at the bottom of a well.</p>
     </body></html>
     """
-    
-    soup = BeautifulSoup(html_doc, 'html.parser')
-    
-    # FIX ME: Get the title string (without tags)
-    # title = soup.title.string
+
+    soup = BeautifulSoup(html_doc, "html.parser")
+
+    # TODO: Get the title string (the text inside <title> tags, without the tags)
+    # Hint: Access soup.title to get the tag, then .string to get the text
     title = ""
-    
+
+    # Verification for title
+    if title == "":
+        raise Exception("title is empty! Use soup.title.string to get the title text")
+
     if title != "The Dormouse's story":
-        raise Exception(f"Expected title 'The Dormouse's story', got '{title}'")
-        
-    # FIX ME: Find the first <a> tag
-    # link = soup.a
-    link = None
-    
-    if link is None or link.name != "a":
-        raise Exception("Did not find the link!")
-        
-    print("Scraping successful!")
+        raise Exception(f'Expected title "The Dormouse\'s story", got "{title}"')
+
+    # TODO: Find the first <a> tag in the document
+    # Hint: You can use soup.find('a') or simply soup.a
+    first_link = None
+
+    # Verification for link
+    if first_link is None:
+        raise Exception(
+            "first_link is None! Use soup.find('a') or soup.a to find the first link"
+        )
+
+    if first_link.name != "a":
+        raise Exception(f"Expected an <a> tag, got <{first_link.name}>")
+
+    print("Web scraping successful!")
+    print(f"Title: {title}")
+    print(f"First link text: {first_link.string}")
+    print(f"First link href: {first_link['href']}")
+
 
 if __name__ == "__main__":
     main()

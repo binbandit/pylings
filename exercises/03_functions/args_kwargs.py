@@ -1,56 +1,60 @@
 """
-Concept: *args and **kwargs
+args_kwargs.py - *args and **kwargs
 
-What:
-- `*args` (Variable Positional Arguments): Allows a function to accept any number of extra arguments as a **tuple**.
-- `**kwargs` (Variable Keyword Arguments): Allows a function to accept any number of named arguments as a **dictionary**.
+Sometimes you want a function to accept any number of arguments:
 
-Why:
-Use these when writing flexible functions (like decorators, wrappers, or logging utilities) that shouldn't be limited to a fixed set of parameters.
+*args (positional arguments):
+    def sum_all(*args):
+        return sum(args)  # args is a tuple
 
-How:
-```python
-def example(first, *args, **kwargs):
-    print(first)
-    print(args)   # Tuple, e.g., (1, 2)
-    print(kwargs) # Dict, e.g., {'a': 1, 'b': 2}
-    
-example("Hi", 1, 2, a=1, b=2)
-```
+    sum_all(1, 2, 3)      # args = (1, 2, 3)
 
-Task:
-Update the `logger` function to accept:
-1. `message` (required argument)
-2. `*args` (optional extra positional arguments)
-3. `**kwargs` (optional extra keyword arguments)
+**kwargs (keyword arguments):
+    def print_info(**kwargs):
+        for key, value in kwargs.items():
+            print(f"{key}: {value}")
+
+    print_info(name="Alice", age=30)  # kwargs = {'name': 'Alice', 'age': 30}
+
+You can combine them:
+    def example(required, *args, **kwargs):
+        pass
+
+Your task: Modify the `log_message` function to accept:
+1. `message` - required first argument
+2. `*args` - any additional positional arguments
+3. `**kwargs` - any additional keyword arguments
 """
 
-# FIX ME: Accept message, *args, and **kwargs
-def logger(message):
-    print(f"MSG: {message}")
-    # Print args and kwargs if you like, for learning
-    # print(args)
-    # print(kwargs)
+
+# TODO: Add *args and **kwargs to this function signature
+def log_message(message):
+    print(f"LOG: {message}")
+
 
 def main():
-    # This call should work if defined correctly
+    # This should work if you added *args and **kwargs
     try:
-        logger("Error", "db_connection", 500, user="admin", retry=True)
-    except TypeError:
-        raise Exception("logger function signature incorrect! Needs *args and **kwargs")
-    
-    # We can inspect the code object to be sure, or just rely on the call passing.
+        log_message("Error occurred", "file.py", 42, user="admin", level="critical")
+    except TypeError as e:
+        raise Exception(f"Function signature is wrong: {e}")
+
+    # Verify the function signature
     import inspect
-    sig = inspect.signature(logger)
-    
-    has_var_positional = any(p.kind == p.VAR_POSITIONAL for p in sig.parameters.values())
-    has_var_keyword = any(p.kind == p.VAR_KEYWORD for p in sig.parameters.values())
-    
+
+    sig = inspect.signature(log_message)
+    params = list(sig.parameters.values())
+
+    has_var_positional = any(p.kind == inspect.Parameter.VAR_POSITIONAL for p in params)
+    has_var_keyword = any(p.kind == inspect.Parameter.VAR_KEYWORD for p in params)
+
     if not has_var_positional:
-        raise Exception("Missing *args")
-    
+        raise Exception("Function needs *args (VAR_POSITIONAL parameter)")
     if not has_var_keyword:
-        raise Exception("Missing **kwargs")
+        raise Exception("Function needs **kwargs (VAR_KEYWORD parameter)")
+
+    print("*args and **kwargs work correctly!")
+
 
 if __name__ == "__main__":
     main()

@@ -1,71 +1,118 @@
 """
-Concept: Properties (@property)
+Concept: Properties (@property decorator)
 
 What:
-The `@property` decorator allows you to define methods that behave like attributes.
-You can add logic (validation, calculation) when getting or setting a value.
+The `@property` decorator lets you define methods that behave like attributes.
+When you access `obj.price`, Python calls a method behind the scenes. This
+lets you add logic (like validation) without changing how users access the data.
 
 Why:
-It gives you control over attribute access without changing the interface. 
-Users still access `obj.score` instead of `obj.get_score()`, but you can enforce `score >= 0` behind the scenes.
+- Validate data before setting (e.g., price can't be negative)
+- Compute values on-the-fly (e.g., area from width and height)
+- Keep a clean interface (users write `obj.price`, not `obj.get_price()`)
 
 How:
 ```python
-class Circle:
-    def __init__(self, radius):
-        self._radius = radius # Convention: _variable is internal
-        
-    @property
-    def radius(self):
-        return self._radius
-    
-    @radius.setter
-    def radius(self, value):
-        if value < 0:
-            raise ValueError("Radius cannot be negative")
-        self._radius = value
+class Temperature:
+    def __init__(self, celsius):
+        self._celsius = celsius  # Convention: _ prefix for internal storage
 
-c = Circle(5)
-c.radius = 10  # Calls the setter
-print(c.radius) # Calls the getter
+    @property
+    def celsius(self):
+        '''Getter - called when you READ the attribute'''
+        return self._celsius
+
+    @celsius.setter
+    def celsius(self, value):
+        '''Setter - called when you WRITE to the attribute'''
+        if value < -273.15:
+            raise ValueError("Temperature below absolute zero!")
+        self._celsius = value
+
+t = Temperature(25)
+print(t.celsius)  # Calls the getter -> 25
+t.celsius = 30    # Calls the setter
+t.celsius = -300  # Raises ValueError!
 ```
 
+Key points:
+- Use `_variable` for internal storage (convention for "private")
+- `@property` creates a getter
+- `@name.setter` creates a setter for the property named `name`
+
 Task:
-1. Add a `@property` named `price` to the `Product` class.
-2. Add a `@price.setter` that ensures the price is never negative (raise ValueError if it is).
+1. Add a `@property` named `price` that returns `self._price`
+2. Add a `@price.setter` that raises ValueError if the new price is negative
 """
 
+
 class Product:
-    def __init__(self, price):
-        self._price = price
-        
-    # FIX ME: Add @property for price returning self._price
-    
-    # FIX ME: Add @price.setter to validate value >= 0 before setting self._price
-    pass
+    def __init__(self, name, price):
+        self.name = name
+        self._price = price  # Internal storage
+
+    # TODO: Add a @property decorator and define a 'price' method
+    # that returns self._price
+
+    # TODO: Add a @price.setter decorator and define a 'price' method
+    # that validates value >= 0 before setting self._price
+    # If value < 0, raise ValueError("Price cannot be negative")
+
 
 def main():
-    p = Product(10)
-    
-    # Test Getter
-    # if p.price != 10:
-    #     raise Exception("Getter failed")
-        
-    # Test Setter
-    # p.price = 20
-    # if p.price != 20: 
-    #     raise Exception("Setter failed")
-        
-    # Test Validation
-    try:
-        # p.price = -5
-        pass # Remove this pass when strictly testing
-    except ValueError:
-        print("Validation working!")
-        return
+    laptop = Product("Laptop", 999)
 
-    # Once implemented, ensure we can't set negative price
-    # raise Exception("Validation failed! Should raise ValueError for negative price")
+    # Test 1: Property getter works
+    try:
+        current_price = laptop.price
+    except AttributeError:
+        raise Exception(
+            "Cannot access 'price' property!\n"
+            "Hint: Add @property decorator above a method named 'price'"
+        )
+
+    if current_price != 999:
+        raise Exception(
+            f"Expected laptop.price to be 999, got {current_price}\n"
+            "Hint: The property getter should return self._price"
+        )
+
+    # Test 2: Property setter works
+    try:
+        laptop.price = 899
+    except AttributeError:
+        raise Exception(
+            "Cannot set 'price' property!\n"
+            "Hint: Add @price.setter decorator above a setter method"
+        )
+
+    if laptop.price != 899:
+        raise Exception(
+            f"After setting price to 899, got {laptop.price}\n"
+            "Hint: The setter should assign the value to self._price"
+        )
+
+    # Test 3: Validation rejects negative prices
+    try:
+        laptop.price = -50
+        raise Exception(
+            "Setting negative price should raise ValueError!\n"
+            "Hint: In the setter, check 'if value < 0: raise ValueError(...)'"
+        )
+    except ValueError:
+        pass  # This is expected!
+
+    # Test 4: Price unchanged after failed validation
+    if laptop.price != 899:
+        raise Exception("Price should remain 899 after rejected negative value!")
+
+    # Test 5: Zero price is valid
+    laptop.price = 0
+    if laptop.price != 0:
+        raise Exception("Setting price to 0 should be allowed!")
+
+    print("Success! Your Product class has working price validation!")
+
 
 if __name__ == "__main__":
     main()

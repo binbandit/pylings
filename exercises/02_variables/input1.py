@@ -1,40 +1,41 @@
 """
-Concept: User Input
+input1.py - User Input
 
-What:
-The `input()` function pauses your program and waits for the user to type something and press Enter.
-It ALWAYS returns the input as a string (str), even if the user types a number.
+The `input()` function reads text from the user. It pauses the program,
+waits for the user to type something, and returns what they typed as a string.
 
-Why:
-Interactive programs need to get data from users—whether it's a name, a choice in a game, or a configuration value.
+    name = input("What is your name? ")
+    print(f"Hello, {name}!")
 
-How:
-```python
-name = input("Enter your name: ")
-age = input("Enter your age: ") # "25" (string)
-age_number = int(age) # Convert to int
-```
+Important: input() ALWAYS returns a string, even if the user types a number:
+    age = input("Enter age: ")  # If user types 25, age is "25" (string)
+    age = int(age)              # Convert to integer if needed
 
-Task:
-Simulate a user input of "Alice" and assign it to `user_name`.
-(In this automated exercise, we manually assign the variable instead of calling input(), 
-but conceptually this is handling user input).
+For this automated exercise, we can't actually wait for input, so you'll
+simulate it by directly assigning a value.
+
+Your task: Assign the string "Alice" to the variable `user_name`.
 """
 
+
 def main():
-    # In a real app, you would do: user_name = input("Enter your name: ")
-    # For this exercise, just assign the value "Alice" to the variable `user_name`
-    
-    user_name = None # FIX ME
-    
+    # In a real program you would write:
+    #     user_name = input("Enter your name: ")
+    # For this exercise, directly assign "Alice" to user_name
+
+    # TODO: Assign "Alice" to user_name
+    user_name = None
+
     if user_name is None:
-        print("Please set the user_name variable!")
-        return
+        raise Exception("You need to assign a value to user_name!")
 
     print(f"Hello, {user_name}!")
-    
+
     if user_name != "Alice":
-        raise Exception("user_name should be 'Alice'")
+        raise Exception(f"user_name should be 'Alice', got '{user_name}'")
+
+    print("Input handling complete!")
+
 
 if __name__ == "__main__":
     main()

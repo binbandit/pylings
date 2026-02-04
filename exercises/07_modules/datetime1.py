@@ -1,57 +1,82 @@
 """
-Concept: Datetime
+Concept: Working with Dates and Times (datetime module)
 
-What:
-The `datetime` module is Python's standard way of handling dates and times.
-- `datetime`: Represents a specific moment (year, month, day, hour, minute, second).
-- `timedelta`: Represents a **duration** or difference between two times (e.g., "7 days").
+The `datetime` module is Python's standard library for handling dates and times.
 
-Why:
-Never try to do date math (like "add 7 days") manually. You will get it wrong (leap years, varying month lengths). Use `datetime`!
+Key classes:
+- `datetime`: Represents a specific point in time (year, month, day, hour, etc.)
+- `timedelta`: Represents a duration (e.g., 7 days, 3 hours, 30 minutes)
 
-How:
-```python
-from datetime import datetime, timedelta
+Common operations:
+    from datetime import datetime, timedelta
 
-now = datetime.now()             # Current time
-one_week = timedelta(days=7)    # Duration of 7 days
-next_week = now + one_week       # Add duration to a date
-```
+    now = datetime.now()           # Current date and time
+    today = datetime.today()       # Also current date and time
+
+    one_week = timedelta(days=7)   # A duration of 7 days
+    one_hour = timedelta(hours=1)  # A duration of 1 hour
+
+    future = now + one_week        # Add a duration to a datetime
+    past = now - timedelta(days=1) # Subtract a duration
+
+Why use datetime instead of manual calculations?
+- Handles leap years automatically
+- Handles varying month lengths
+- Handles timezone complexities
+- Prevents off-by-one errors
 
 Task:
-1. Get the current time using `datetime.now()` and assign to `now`.
-2. Create a `timedelta` representing exactly 7 days and assign to `delta`.
+1. Get the current date/time using datetime.now() and assign it to `now`
+2. Create a timedelta representing 7 days and assign it to `one_week`
 """
 
 from datetime import datetime, timedelta
 
+
 def main():
-    # FIX ME: Get current time
-    # now = ...
+    # TODO: Get the current date and time
+    # Hint: Use datetime.now()
     now = None
-    
-    # FIX ME: Create a timedelta of 7 days
-    # delta = ...
-    delta = None
-    
-    if now is None or delta is None:
-        print("Please set 'now' and 'delta'!")
-        return
-        
-    future = now + delta
-    
+
+    # TODO: Create a timedelta of 7 days
+    # Hint: Use timedelta(days=7)
+    one_week = None
+
+    # Verification
+    if now is None:
+        raise AssertionError(
+            "Variable 'now' is None.\nSet it to the current time using datetime.now()"
+        )
+
+    if one_week is None:
+        raise AssertionError(
+            "Variable 'one_week' is None.\n"
+            "Set it to a timedelta of 7 days using timedelta(days=7)"
+        )
+
     if not isinstance(now, datetime):
-        raise Exception("now should be a datetime object")
-        
-    if not isinstance(delta, timedelta):
-        raise Exception("delta should be a timedelta object")
-        
-    if delta.days != 7:
-        raise Exception("delta should be 7 days")
-        
-    # Check approximately (ignoring execution time micros)
-    if (future - now).days != 7:
-        raise Exception("Future time calculation seems off")
+        raise AssertionError(
+            f"'now' should be a datetime object, but got {type(now).__name__}"
+        )
+
+    if not isinstance(one_week, timedelta):
+        raise AssertionError(
+            f"'one_week' should be a timedelta object, but got {type(one_week).__name__}"
+        )
+
+    if one_week.days != 7:
+        raise AssertionError(
+            f"'one_week' should represent 7 days, but represents {one_week.days} days"
+        )
+
+    # Calculate future date
+    next_week = now + one_week
+
+    print(f"Current time: {now}")
+    print(f"One week later: {next_week}")
+    print(f"Difference: {one_week}")
+    print("Successfully used datetime and timedelta!")
+
 
 if __name__ == "__main__":
     main()

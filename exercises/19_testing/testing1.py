@@ -1,56 +1,106 @@
 """
 Concept: Testing with Assert
 
-What:
-The `assert` keyword is Python's built-in debugging tool.
-It takes a condition (expression that returns True/False).
-If the condition is **False**, it raises an `AssertionError` and crashes the program.
+The `assert` statement is Python's simplest testing tool. It checks if a
+condition is True. If the condition is False, it raises an AssertionError.
 
-Why:
-It's the simplest form of automated testing. 
-You "assert" that something MUST be true at this point in the code (e.g., "The list must not be empty").
+Syntax:
+    assert condition
+    assert condition, "Error message if False"
 
-How:
-```python
-x = 5
-assert x > 0        # Passes (do nothing)
-assert x == 99      # Crashes! AssertionError
-assert x == 99, "x should be 99" # Crashes with custom message
-```
+Examples:
+    x = 5
+    assert x > 0           # Passes silently (x is greater than 0)
+    assert x == 5          # Passes silently
+    assert x == 10         # Raises AssertionError!
+    assert x == 10, "x should be 10"  # AssertionError with message
+
+Why use assert?
+- Quick sanity checks during development
+- Simple unit tests
+- Documenting assumptions in your code
 
 Task:
-1. Use `assert` to check that `sum_vals` equals 10.
-2. If the user calculates incorrectly, the assertion is our safety net.
+Complete the test functions by writing assert statements that verify:
+1. test_addition: add(2, 3) equals 5
+2. test_subtraction: subtract(10, 4) equals 6
+3. test_multiply_negative: multiply(-3, 4) equals -12
 """
 
+
 def add(a, b):
+    """Return the sum of a and b."""
     return a + b
 
-def main():
-    sum_vals = add(3, 7)
-    
-    # FIX ME: Assert that sum_vals is 10
-    # assert ...
+
+def subtract(a, b):
+    """Return a minus b."""
+    return a - b
+
+
+def multiply(a, b):
+    """Return the product of a and b."""
+    return a * b
+
+
+def test_addition():
+    """Test that add() works correctly."""
+    result = add(2, 3)
+    # TODO: Write an assert statement to check that result equals 5
+    # Hint: assert result == expected_value, "Error message"
     pass
-    
-    # If the student writes `assert sum_vals == 10`, it passes.
-    # If they write `assert sum_vals == 9`, it raises AssertionError.
-    # For this exercise checker to verify they WROTE an assertion, 
-    # we can't easily introspect without AST, but we can check if they fixed the logic.
-    # For simplicity, let's just make sure they DON'T raise an error, and we trust they used assert.
-    # But to make it fail initially, we can introduce a bug.
-    
-    broken_sum = add(3, 6) # Equals 9
-    
-    # Task 2: Assert that broken_sum is NOT 10.
-    # assert broken_sum != 10
-    
-    try:
-        assert sum_vals == 10, "Sum should be 10"
-        assert broken_sum != 10, "Broken sum is not 10"
-        print("Tests passed!")
-    except AssertionError as e:
-        raise Exception(f"Assertion failed: {e}")
+
+
+def test_subtraction():
+    """Test that subtract() works correctly."""
+    result = subtract(10, 4)
+    # TODO: Write an assert statement to check that result equals 6
+    pass
+
+
+def test_multiply_negative():
+    """Test that multiply() works with negative numbers."""
+    result = multiply(-3, 4)
+    # TODO: Write an assert statement to check that result equals -12
+    pass
+
+
+def main():
+    # Run all tests
+    tests = [
+        ("test_addition", test_addition),
+        ("test_subtraction", test_subtraction),
+        ("test_multiply_negative", test_multiply_negative),
+    ]
+
+    for test_name, test_func in tests:
+        try:
+            test_func()
+            # Check if the test actually has an assert (not just pass)
+            import dis
+            import io
+            import contextlib
+
+            # Get the bytecode as string
+            f = io.StringIO()
+            with contextlib.redirect_stdout(f):
+                dis.dis(test_func)
+            bytecode = f.getvalue()
+
+            # Check if there's a comparison operation (indicates assert)
+            if "COMPARE_OP" not in bytecode and "CONTAINS_OP" not in bytecode:
+                raise Exception(
+                    f"{test_name}: No assert statement found!\n"
+                    "Replace 'pass' with an assert statement.\n"
+                    "Example: assert result == 5, 'Result should be 5'"
+                )
+
+            print(f"  {test_name} passed!")
+        except AssertionError as e:
+            raise Exception(f"{test_name} failed: {e}")
+
+    print("\nAll tests passed!")
+
 
 if __name__ == "__main__":
     main()

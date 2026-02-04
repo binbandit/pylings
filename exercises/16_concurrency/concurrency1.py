@@ -1,39 +1,77 @@
 """
-Concept: Concurrency (Threading)
-Threading allows multiple operations to run concurrently. You create a `Thread`, `.start()` it, and `.join()` it to wait for completion.
+Concept: Threading (Concurrent Execution)
 
-Task: Start and join the threads to ensure the counter is incremented correctly.
+What:
+Threading allows multiple operations to run concurrently within the same process.
+Each thread can execute independently, making it useful for I/O-bound tasks.
+
+Why:
+- Handle multiple operations simultaneously (e.g., downloading files while updating UI)
+- Improve responsiveness in applications
+- Utilize waiting time during I/O operations
+
+How:
+1. Create a Thread object with a target function: `t = threading.Thread(target=my_func)`
+2. Start the thread: `t.start()` - begins execution in the background
+3. Join the thread: `t.join()` - wait for the thread to complete
+
+```python
+import threading
+
+def worker():
+    print("Working...")
+
+t = threading.Thread(target=worker)
+t.start()   # Begin execution
+t.join()    # Wait for completion
+```
+
+Important: Without `.join()`, the main program might exit before threads finish!
+
+Task:
+1. Start each thread using the `.start()` method
+2. Join each thread using the `.join()` method to wait for completion
+3. The counter should reach 10 after all threads finish
 """
 
 import threading
-import time
 
-shared_counter = 0
+counter = 0
+lock = threading.Lock()
+
 
 def increment():
-    global shared_counter
-    # FIX ME: Just uncomment the increment. In a real scenario we'd need a lock,
-    # but for this simple exercise we just want to spawn threads.
-    # shared_counter += 1
-    pass
+    """Increment the shared counter safely using a lock."""
+    global counter
+    with lock:
+        counter += 1
+
 
 def main():
+    global counter
+    counter = 0
+
     threads = []
     for _ in range(10):
         t = threading.Thread(target=increment)
         threads.append(t)
-        # FIX ME: Start the thread!
-        # t.start()
-    
-    for t in threads:
-        # FIX ME: Join the thread!
-        # t.join()
+        # TODO: Start the thread using t.start()
         pass
-        
-    if shared_counter != 10:
-        raise Exception(f"Counter should be 10, got {shared_counter}. Did you start/join threads?")
-        
-    print("Threading verified!")
+
+    for t in threads:
+        # TODO: Join the thread using t.join() to wait for it to complete
+        pass
+
+    # Verification
+    if counter != 10:
+        raise Exception(
+            f"Counter is {counter}, expected 10.\n"
+            "Hint: Did you start() and join() all the threads?"
+        )
+
+    print("All threads completed successfully!")
+    print(f"Final counter value: {counter}")
+
 
 if __name__ == "__main__":
     main()

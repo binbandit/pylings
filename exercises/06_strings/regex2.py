@@ -1,41 +1,50 @@
+"""
+regex2.py - Regex Capturing Groups
 
-# REGEX (CAPTURING GROUPS)
-# ========================
-#
-# What: Parentheses `()` in regex create "groups". 
-#       `re.findall` returns a list of all matches.
-#
-# Why:  To extract specific parts of a pattern (e.g., separating user from domain in email).
-#
-# How:  r"(\w+)@(\w+)\.com" matches "user@gmail.com" and captures "user" and "gmail".
-#       re.findall returns a list of tuples if groups are present.
-#
-# Task:
-# 1. Use `re.findall` to find all emails in the text.
-# 2. The regex should capture the username and the domain separately.
-#    Input: "Contact alice@example.com or bob@test.org"
-#    Output: [('alice', 'example.com'), ('bob', 'test.org')]
-#    Note: For simplicity, assume domain can end in anything (use .+, or better \w+\.\w+)
+Parentheses () create "capturing groups" that extract parts of a match:
+
+    import re
+    pattern = r"(\w+)@(\w+)\.com"
+    match = re.search(pattern, "user@gmail.com")
+    match.group(0)  # "user@gmail.com" (full match)
+    match.group(1)  # "user" (first group)
+    match.group(2)  # "gmail" (second group)
+
+re.findall() with groups returns a list of tuples:
+    re.findall(r"(\w+)@(\w+)", "a@b c@d")  # [("a", "b"), ("c", "d")]
+
+Your task: Write a pattern with two capturing groups to extract email parts:
+- Group 1: the username (before @)
+- Group 2: the domain (after @)
+"""
 
 import re
 
+
 def extract_emails(text):
-    # TODO: Write pattern with 2 groups: (\w+)@([\w.]+)
+    # TODO: Write a pattern with groups: (username)@(domain)
+    # Hint: (\w+) matches word characters, @ is literal, ([\w.]+) matches domain
     pattern = r""
+
     return re.findall(pattern, text)
 
-def test_regex_groups():
-    text = "Please email support@pylings.io or admin@google.com for help."
+
+def main():
+    text = "Contact support@pylings.io or admin@google.com for help."
     results = extract_emails(text)
-    
-    # Needs to capture specific parts, not just the whole email
-    # Let's say we want (username, domain)
-    
-    # We expect results to be list of tuples
-    assert ("support", "pylings.io") in results, "Failed to capture groups"
-    assert ("admin", "google.com") in results, "Failed to capture second email"
-    assert len(results) == 2
+
+    if len(results) != 2:
+        raise Exception(f"Expected 2 email matches, got {len(results)}")
+
+    if ("support", "pylings.io") not in results:
+        raise Exception(f"Expected ('support', 'pylings.io') in results, got {results}")
+
+    if ("admin", "google.com") not in results:
+        raise Exception(f"Expected ('admin', 'google.com') in results, got {results}")
+
+    print(f"Found emails: {results}")
+    print("Regex capturing groups work!")
+
 
 if __name__ == "__main__":
-    test_regex_groups()
-    print("Regex groups passed!")
+    main()

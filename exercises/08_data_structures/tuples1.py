@@ -2,51 +2,76 @@
 Concept: Tuples
 
 What:
-Tuples are ordered collections of items, just like lists. 
-However, tuples are **immutable**, meaning you cannot add, remove, or change elements after creation.
-Tuples are created using round parentheses `()`.
+Tuples are ordered collections of items, similar to lists.
+The KEY difference: tuples are **immutable** - once created, they cannot be changed.
+Tuples are created using parentheses `()` or just commas.
 
 Why:
-- Use tuples when you want to ensure data doesn't change by accident (e.g., coordinates `(x, y)` or configuration constants).
-- Tuples are slightly faster and more memory-efficient than lists.
-- Tuples can be used as keys in dictionaries (lists cannot).
+- Use tuples for data that shouldn't change (coordinates, RGB colors, database records)
+- Tuples are slightly faster and use less memory than lists
+- Tuples can be used as dictionary keys (lists cannot!)
+- They signal intent: "this data is fixed"
 
 How:
-```python
-my_tuple = ("red", "green", "blue")
-first_item = my_tuple[0] # "red"
-# my_tuple[0] = "yellow" # ERROR! Cannot modify a tuple.
-```
+    # Creating tuples
+    point = (10, 20)
+    colors = ("red", "green", "blue")
+    single = (42,)          # Note the comma for single-item tuple!
+    also_tuple = 1, 2, 3    # Parentheses are optional
+
+    # Accessing elements (same as lists)
+    x = point[0]            # 10
+    color = colors[1]       # "green"
+
+    # Unpacking (very useful!)
+    x, y = point            # x=10, y=20
+
+    # Cannot modify!
+    point[0] = 5            # TypeError: tuples don't support item assignment
 
 Task:
-1. Create a tuple named `my_tuple` containing "apple", "banana", and "cherry".
-2. Access the second element (index 1) and assign it to the variable `item`.
+1. Create a tuple named `my_tuple` containing "apple", "banana", and "cherry"
+2. Access the second element (index 1) and assign it to variable `item`
 """
 
-def main():
-    # FIX ME: Create the tuple
-    # my_tuple = ...
-    my_tuple = None
-    
-    # FIX ME: Get the second element (index 1)
-    # item = ...
-    item = None
-    
-    if not isinstance(my_tuple, tuple):
-        raise Exception("my_tuple should be a tuple!")
-        
-    if len(my_tuple) != 3:
-        raise Exception("my_tuple should have 3 elements")
-        
-    if item != "banana":
-        raise Exception(f"Expected 'banana', got '{item}'")
 
-    # Verify immutability (just for learning)
+def main():
+    # TODO: Create a tuple with "apple", "banana", "cherry"
+    my_tuple = None
+
+    # TODO: Get the second element (index 1) from my_tuple
+    item = None
+
+    # Verification
+    if my_tuple is None:
+        raise Exception(
+            "my_tuple is None! Create a tuple: ('apple', 'banana', 'cherry')"
+        )
+
+    if not isinstance(my_tuple, tuple):
+        raise Exception(
+            f"my_tuple should be a tuple, but got {type(my_tuple).__name__}.\n"
+            "Use parentheses: (item1, item2, item3)"
+        )
+
+    if len(my_tuple) != 3:
+        raise Exception(f"my_tuple should have 3 elements, got {len(my_tuple)}")
+
+    if item is None:
+        raise Exception("item is None! Access the tuple: my_tuple[1]")
+
+    if item != "banana":
+        raise Exception(f"Expected item to be 'banana', got '{item}'")
+
+    # Demonstrate immutability (this should fail)
     try:
         my_tuple[0] = "orange"
-        raise Exception("Should not be able to modify a tuple!")
+        raise Exception("Tuples should be immutable, but modification succeeded!")
     except TypeError:
-        pass # This is expected!
+        pass  # This is expected - tuples can't be modified
+
+    print("Tuple exercise completed successfully!")
+
 
 if __name__ == "__main__":
     main()

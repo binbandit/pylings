@@ -2,48 +2,70 @@
 Concept: Sets
 
 What:
-Sets are unordered collections of **unique** elements. 
-They are created using curly braces `{1, 2, 3}` or the `set()` function.
+Sets are unordered collections of **unique** elements.
+They automatically remove duplicates and don't maintain insertion order.
+Sets are created using curly braces `{}` or the `set()` function.
 
 Why:
-- Removing duplicates from a list: `list(set(my_list))`
-- Checking for membership is VERY fast (`if x in my_set`) compared to lists.
-- Performing mathematical set operations like union, intersection, and difference.
+- Automatically remove duplicates from data
+- VERY fast membership testing: `if x in my_set` is O(1) vs O(n) for lists
+- Mathematical set operations: union, intersection, difference
+- Great for finding unique items or comparing collections
 
 How:
-```python
-my_set = {1, 2, 3}
-my_set.add(4)      # {1, 2, 3, 4}
-my_set.add(2)      # {1, 2, 3, 4} (No change, 2 is already there)
-unique_list = list(set([1, 2, 2, 3])) # [1, 2, 3]
-```
+    # Creating sets
+    my_set = {1, 2, 3}
+    from_list = set([1, 2, 2, 3, 3])  # {1, 2, 3} - duplicates removed!
+    empty_set = set()                  # Note: {} creates an empty DICT!
+
+    # Adding elements
+    my_set.add(4)                      # {1, 2, 3, 4}
+    my_set.add(2)                      # {1, 2, 3, 4} - no change, 2 exists
+
+    # Set operations
+    a = {1, 2, 3}
+    b = {2, 3, 4}
+    a | b   # Union: {1, 2, 3, 4}
+    a & b   # Intersection: {2, 3}
+    a - b   # Difference: {1}
 
 Task:
-1. Create a set named `my_set` from the list `[1, 2, 2, 3, 3, 3]`. Note how duplicates disappear!
-2. Add the number `4` to your set using `.add()`.
+1. Create a set named `my_set` from `initial_list` (notice how duplicates vanish!)
+2. Add the number 4 to the set using `.add()`
 """
+
 
 def main():
     initial_list = [1, 2, 2, 3, 3, 3]
-    
-    # FIX ME: Create a set from initial_list
-    # my_set = set(initial_list)
+
+    # TODO: Create a set from initial_list using set()
     my_set = set()
-    
-    # FIX ME: Add the number 4
-    # my_set.add(4)
-    
+
+    # TODO: Add the number 4 to the set using .add()
+
+    # Verification
+    if len(my_set) == 0:
+        raise Exception(
+            "my_set is empty! Create it from initial_list: set(initial_list)"
+        )
+
     if not isinstance(my_set, set):
-        raise Exception("my_set should be a set!")
-        
-    if len(my_set) != 4:
-        raise Exception(f"Expected 4 unique elements, got {len(my_set)}")
-        
+        raise Exception(f"my_set should be a set, got {type(my_set).__name__}")
+
     if 4 not in my_set:
-        raise Exception("4 should be in the set")
-        
-    if 2 not in my_set:
-        raise Exception("2 should be in the set")
+        raise Exception("4 is not in the set! Use my_set.add(4)")
+
+    if len(my_set) != 4:
+        raise Exception(
+            f"Expected 4 unique elements {{1, 2, 3, 4}}, got {len(my_set)} elements.\n"
+            "Did you create the set from initial_list AND add 4?"
+        )
+
+    if my_set != {1, 2, 3, 4}:
+        raise Exception(f"Expected {{1, 2, 3, 4}}, got {my_set}")
+
+    print("Set exercise completed! Notice how duplicates were removed.")
+
 
 if __name__ == "__main__":
     main()

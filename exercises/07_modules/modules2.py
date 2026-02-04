@@ -1,22 +1,42 @@
 """
-Concept: Importing from Modules
-You can import specific functions or classes from a module using `from ... import ...`.
+Concept: Importing Specific Items from Modules (from ... import ...)
 
-Task: Import the `say_hello` function from the `my_lib` module (which is in the same directory).
+Instead of importing an entire module, you can import specific functions,
+classes, or variables directly using:
+    from module_name import item_name
+
+This lets you use the item directly without the module prefix:
+    from math import sqrt
+    result = sqrt(16)  # No need for math.sqrt()
+
+You can also import multiple items:
+    from math import sqrt, pi, ceil
+
+Or rename imports with `as`:
+    from math import sqrt as square_root
+
+Task:
+Import the `say_hello` function from the `my_lib` module (located in the same
+directory as this file).
+
+The my_lib module contains a function called `say_hello` that returns a greeting.
 """
 
+# TODO: Import the say_hello function from my_lib
+# Hint: from ??? import ???
+
+
 def main():
-    # FIX ME: Import say_hello from my_lib
-    # from my_lib import say_hello
-    
-    try:
-        msg = say_hello()
-        if msg != "Hello from my_lib!":
-            raise Exception("Wrong message!")
-        print(msg)
-    except NameError:
-        print("say_hello is not defined!")
-        raise
+    # Call the imported function
+    message = say_hello()
+
+    expected = "Hello from my_lib!"
+    if message != expected:
+        raise AssertionError(f"Expected '{expected}', but got '{message}'")
+
+    print(message)
+    print("Successfully imported from a local module!")
+
 
 if __name__ == "__main__":
     main()
