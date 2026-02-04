@@ -1,716 +1,724 @@
 # Pylings Configuration
+# Exercises are ordered for optimal learning progression
 
 [pylings]
 description = "Python exercises for beginners to experts"
 
-# 1. BASICS
-# ===========
+# =============================================================================
+# PHASE 1: FUNDAMENTALS
+# =============================================================================
 
+# --- 01. Introduction ---
 [[exercises]]
 name = "intro"
 path = "exercises/01_intro/intro.py"
 mode = "run"
-hint = "Uncomment the print statement."
-
-[[exercises]]
-name = "variables1"
-path = "exercises/02_variables/variables1.py"
-mode = "run"
-hint = "Assign a value to 'x'."
-
-[[exercises]]
-name = "variables2"
-path = "exercises/02_variables/variables2.py"
-mode = "run"
-hint = "Check if x is 10."
+hint = "Delete the exception line and add a print statement."
 
 [[exercises]]
 name = "types1"
 path = "exercises/01_intro/types1.py"
 mode = "run"
-hint = "Use int() and str()."
+hint = "Use int() to convert string to integer, str() to convert back."
+
+# --- 02. Variables ---
+[[exercises]]
+name = "variables1"
+path = "exercises/02_variables/variables1.py"
+mode = "run"
+hint = "Assign a value to 'x' using the = operator."
+
+[[exercises]]
+name = "variables2"
+path = "exercises/02_variables/variables2.py"
+mode = "run"
+hint = "Assign the value 10 to x."
 
 [[exercises]]
 name = "input1"
 path = "exercises/02_variables/input1.py"
 mode = "run"
-hint = "Assign a value to user_name."
+hint = "Assign the string 'Alice' to user_name."
 
-# Control Flow (If, Match, Loops)
-[[exercises]]
-name = "if1"
-path = "exercises/04_control_flow/if1.py"
-mode = "run"
-hint = "Change the condition."
-
-[[exercises]]
-name = "if2"
-path = "exercises/04_control_flow/if2.py"
-mode = "run"
-hint = "Add an else block."
-
-[[exercises]]
-name = "if3"
-path = "exercises/04_control_flow/if3.py"
-mode = "run"
-hint = "Add an elif block."
-
-[[exercises]]
-name = "match1"
-path = "exercises/04_control_flow/match1.py"
-mode = "run"
-hint = "Add a case for 418."
-
-[[exercises]]
-name = "match2"
-path = "exercises/04_control_flow/match2.py"
-mode = "run"
-hint = "Match the list pattern."
-
-[[exercises]]
-name = "loop1"
-path = "exercises/05_loops/loop1.py"
-mode = "run"
-hint = "Use 'for x in list'."
-
-[[exercises]]
-name = "loop2"
-path = "exercises/05_loops/loop2.py"
-mode = "run"
-hint = "Use range(10)."
-
-[[exercises]]
-name = "loop3"
-path = "exercises/05_loops/loop3.py"
-mode = "run"
-hint = "Increment the counter."
-
-[[exercises]]
-name = "loop4"
-path = "exercises/05_loops/loop4.py"
-mode = "run"
-hint = "Use break."
-
-[[exercises]]
-name = "loop5"
-path = "exercises/05_loops/loop5.py"
-mode = "run"
-hint = "Use continue."
-
-[[exercises]]
-name = "while1"
-path = "exercises/05_loops/while1.py"
-mode = "run"
-hint = "while count > 0:"
-
-[[exercises]]
-name = "while2"
-path = "exercises/05_loops/while2.py"
-mode = "run"
-hint = "while True: ... if ... break"
-
-[[exercises]]
-name = "loop6"
-path = "exercises/05_loops/loop6.py"
-mode = "run"
-hint = "Use enumerate() and zip()."
-
-# Functions
+# --- 03. Functions ---
 [[exercises]]
 name = "functions1"
 path = "exercises/03_functions/functions1.py"
 mode = "run"
-hint = "Define the function 'call_me'."
+hint = "Define a function using 'def function_name():'."
 
 [[exercises]]
 name = "functions2"
 path = "exercises/03_functions/functions2.py"
 mode = "run"
-hint = "Add a parameter to 'call_me'."
+hint = "Pass an argument when calling the function."
 
 [[exercises]]
 name = "functions3"
 path = "exercises/03_functions/functions3.py"
 mode = "run"
-hint = "Return a value from the function."
+hint = "Add 'return result' to return the value."
 
 [[exercises]]
 name = "functions4"
 path = "exercises/03_functions/functions4.py"
 mode = "run"
-hint = "Ensure default arguments work."
-
-[[exercises]]
-name = "args_kwargs"
-path = "exercises/03_functions/args_kwargs.py"
-mode = "run"
-hint = "Use *args and **kwargs."
+hint = "Change the default parameter value."
 
 [[exercises]]
 name = "functions5"
 path = "exercises/03_functions/functions5.py"
 mode = "run"
-hint = "Return an integer."
+hint = "Add type hints like 'def func(a: float, b: float) -> float:'."
+
+[[exercises]]
+name = "args_kwargs"
+path = "exercises/03_functions/args_kwargs.py"
+mode = "run"
+hint = "Add *args and **kwargs to the function signature."
 
 [[exercises]]
 name = "lambda1"
 path = "exercises/03_functions/lambda1.py"
 mode = "run"
-hint = "Use lambda x: ..."
+hint = "Use 'lambda x: x * 2' syntax."
 
-# Strings
+# --- 04. Control Flow ---
+[[exercises]]
+name = "if1"
+path = "exercises/04_control_flow/if1.py"
+mode = "run"
+hint = "Change the comparison operator (try >= instead of >)."
+
+[[exercises]]
+name = "if2"
+path = "exercises/04_control_flow/if2.py"
+mode = "run"
+hint = "Add an 'else:' block after the if."
+
+[[exercises]]
+name = "if3"
+path = "exercises/04_control_flow/if3.py"
+mode = "run"
+hint = "Add 'elif val >= 10 and val < 100:' between if and else."
+
+[[exercises]]
+name = "match1"
+path = "exercises/04_control_flow/match1.py"
+mode = "run"
+hint = "Add 'case 418:' before the wildcard case."
+
+[[exercises]]
+name = "match2"
+path = "exercises/04_control_flow/match2.py"
+mode = "run"
+hint = "Add 'case [\"look\"]:' to match a single-element list."
+
+# --- 05. Loops ---
+[[exercises]]
+name = "loop1"
+path = "exercises/05_loops/loop1.py"
+mode = "run"
+hint = "Use 'for color in colors:' to iterate."
+
+[[exercises]]
+name = "loop2"
+path = "exercises/05_loops/loop2.py"
+mode = "run"
+hint = "Change range(1) to range(10)."
+
+[[exercises]]
+name = "loop3"
+path = "exercises/05_loops/loop3.py"
+mode = "run"
+hint = "Add 'if i % 2 == 0: count += 1' inside the loop."
+
+[[exercises]]
+name = "loop4"
+path = "exercises/05_loops/loop4.py"
+mode = "run"
+hint = "Replace 'pass' with 'break'."
+
+[[exercises]]
+name = "loop5"
+path = "exercises/05_loops/loop5.py"
+mode = "run"
+hint = "Replace 'pass' with 'continue'."
+
+[[exercises]]
+name = "loop6"
+path = "exercises/05_loops/loop6.py"
+mode = "run"
+hint = "Use 'for i, name in enumerate(names):' and 'for name, age in zip(names, ages):'."
+
+[[exercises]]
+name = "while1"
+path = "exercises/05_loops/while1.py"
+mode = "run"
+hint = "Use 'while count > 0:' and decrement count inside."
+
+[[exercises]]
+name = "while2"
+path = "exercises/05_loops/while2.py"
+mode = "run"
+hint = "Add 'if counter == 10: break' inside the loop."
+
+# --- 06. Strings ---
 [[exercises]]
 name = "strings1"
 path = "exercises/06_strings/strings1.py"
 mode = "run"
-hint = "Concatenate strings."
+hint = "Add ' ' between part1 and part2 when concatenating."
 
 [[exercises]]
 name = "strings2"
 path = "exercises/06_strings/strings2.py"
 mode = "run"
-hint = "Use f-strings."
+hint = "Use f\"I am learning {name} version {version}\"."
 
 [[exercises]]
 name = "strings3"
 path = "exercises/06_strings/strings3.py"
 mode = "run"
-hint = "Slice string[:3]."
+hint = "Use alphabet[:3] to get first 3 characters."
 
 [[exercises]]
 name = "strings4"
 path = "exercises/06_strings/strings4.py"
 mode = "run"
-hint = "Use .lower()."
+hint = "Use loud_message.lower() to convert to lowercase."
 
 [[exercises]]
 name = "strings5"
 path = "exercises/06_strings/strings5.py"
 mode = "run"
-hint = "Use split() and join()."
-
-# Modules
-[[exercises]]
-name = "modules1"
-path = "exercises/07_modules/modules1.py"
-mode = "run"
-hint = "import datetime"
-
-[[exercises]]
-name = "modules2"
-path = "exercises/07_modules/modules2.py"
-mode = "run"
-hint = "from my_lib import say_hello"
-
-[[exercises]]
-name = "datetime1"
-path = "exercises/07_modules/datetime1.py"
-mode = "run"
-hint = "Use timedelta(days=7)."
-
-[[exercises]]
-name = "modules3"
-path = "exercises/07_modules/modules3.py"
-mode = "run"
-hint = "Wrap the print in 'if __name__ == \"__main__\":'"
-
-[[exercises]]
-name = "modules4"
-path = "exercises/07_modules/modules4.py"
-mode = "run"
-hint = "Create and import functions from my_lib.py"
-
-[[exercises]]
-name = "itertools1"
-path = "exercises/07_modules/itertools1.py"
-mode = "run"
-hint = "Use itertools.permutations()."
-
-[[exercises]]
-name = "env_vars"
-path = "exercises/07_modules/env_vars.py"
-mode = "run"
-hint = "Use os.environ."
-
-[[exercises]]
-name = "argparse1"
-path = "exercises/07_modules/argparse1.py"
-mode = "run"
-hint = "Use parser.add_argument('--count')."
-
-[[exercises]]
-name = "itertools1"
-path = "exercises/07_modules/itertools1.py"
-mode = "run"
-hint = "Use itertools.permutations()."
-
-# 2. INTERMEDIATE (Data Structures)
-# =================================
-
-[[exercises]]
-name = "lists1"
-path = "exercises/08_data_structures/lists1.py"
-mode = "run"
-hint = "Use square brackets: ['apple', ...]"
-
-[[exercises]]
-name = "lists2"
-path = "exercises/08_data_structures/lists2.py"
-mode = "run"
-hint = "Use .append(6)"
-
-[[exercises]]
-name = "lists3"
-path = "exercises/08_data_structures/lists3.py"
-mode = "run"
-hint = "Use .remove('paper')"
-
-[[exercises]]
-name = "lists4"
-path = "exercises/08_data_structures/lists4.py"
-mode = "run"
-hint = "Slice syntax: numbers[start:end]"
-
-[[exercises]]
-name = "lists5"
-path = "exercises/08_data_structures/lists5.py"
-mode = "run"
-hint = "Check if x % 2 == 0"
-
-[[exercises]]
-name = "tuples1"
-path = "exercises/08_data_structures/tuples1.py"
-mode = "run"
-hint = "Use parentheses ()."
-
-[[exercises]]
-name = "sets1"
-path = "exercises/08_data_structures/sets1.py"
-mode = "run"
-hint = "Use set() or {}."
-
-[[exercises]]
-name = "dicts1"
-path = "exercises/08_data_structures/dicts1.py"
-mode = "run"
-hint = "Use curly braces: {'name': 'Alice', 'age': 30}"
-
-[[exercises]]
-name = "dicts2"
-path = "exercises/08_data_structures/dicts2.py"
-mode = "run"
-hint = "prices['orange'] = 0.80"
-
-[[exercises]]
-name = "dicts3"
-path = "exercises/08_data_structures/dicts3.py"
-mode = "run"
-hint = "Use .items()"
-
-[[exercises]]
-name = "dicts4"
-path = "exercises/08_data_structures/dicts4.py"
-mode = "run"
-hint = "Use .get('key', default_value)"
-
-[[exercises]]
-name = "dicts5"
-path = "exercises/08_data_structures/dicts5.py"
-mode = "run"
-hint = "Use the '|' operator to merge dicts."
-
-[[exercises]]
-name = "list_comp"
-path = "exercises/08_data_structures/list_comp.py"
-mode = "run"
-hint = "[x**2 for x in ...]"
-
-[[exercises]]
-name = "dict_comp"
-path = "exercises/08_data_structures/dict_comp.py"
-mode = "run"
-hint = "{k: v for k, v in ...}"
-
-[[exercises]]
-name = "collections1"
-path = "exercises/08_data_structures/collections1.py"
-mode = "run"
-hint = "Use Counter(text)."
-
-[[exercises]]
-name = "collections2"
-path = "exercises/08_data_structures/collections2.py"
-mode = "run"
-hint = "Use defaultdict(list)."
-
-[[exercises]]
-name = "heapq1"
-path = "exercises/08_data_structures/heapq1.py"
-mode = "run"
-hint = "Use heapq.nsmallest()."
-
-[[exercises]]
-name = "linked_list1"
-path = "exercises/08_data_structures/linked_list1.py"
-mode = "run"
-hint = "Use Node class and next pointers."
-
-[[exercises]]
-name = "linked_list2"
-path = "exercises/08_data_structures/linked_list2.py"
-mode = "run"
-hint = "Use valid prev pointers."
-
-# Typing
-[[exercises]]
-name = "typing1"
-path = "exercises/18_typing/typing1.py"
-mode = "run"
-hint = "def add(a: int, b: int) -> int:"
-
-[[exercises]]
-name = "typing2"
-path = "exercises/18_typing/typing2.py"
-mode = "run"
-hint = "Use List[str] and Dict[str, int]."
-
-[[exercises]]
-name = "typing3"
-path = "exercises/18_typing/typing3.py"
-mode = "run"
-hint = "Use Optional[int] and Union[int, str]."
-
-[[exercises]]
-name = "typing4"
-path = "exercises/18_typing/typing4.py"
-mode = "run"
-hint = "Callable[[int], int]"
-
-# Error Handling
-[[exercises]]
-name = "error1"
-path = "exercises/12_error_handling/error1.py"
-mode = "run"
-hint = "Use try/except ZeroDivisionError block."
-
-[[exercises]]
-name = "error2"
-path = "exercises/12_error_handling/error2.py"
-mode = "run"
-hint = "Raise the custom exception."
-
-[[exercises]]
-name = "error3"
-path = "exercises/12_error_handling/error3.py"
-mode = "run"
-hint = "Use finally:"
-
-# Testing
-[[exercises]]
-name = "testing1"
-path = "exercises/19_testing/testing1.py"
-mode = "run"
-hint = "Use assert statement."
-
-# Files
-[[exercises]]
-name = "files1"
-path = "exercises/15_files/files1.py"
-mode = "run"
-hint = "Use 'with open(...) as f:'."
-
-[[exercises]]
-name = "json1"
-path = "exercises/15_files/json1.py"
-mode = "run"
-hint = "Use json.dumps() and json.loads()."
-
-[[exercises]]
-name = "csv1"
-path = "exercises/15_files/csv1.py"
-mode = "run"
-hint = "Use csv.reader(f)."
-
-[[exercises]]
-name = "pathlib1"
-path = "exercises/15_files/pathlib1.py"
-mode = "run"
-hint = "Use Path('folder') / 'file.txt'."
-
-# OOP
-[[exercises]]
-name = "oop1"
-path = "exercises/13_oop_basics/oop1.py"
-mode = "run"
-hint = "Define __init__(self, name)."
-
-[[exercises]]
-name = "oop2"
-path = "exercises/13_oop_basics/oop2.py"
-mode = "run"
-hint = "Define add(self, n) and modify self.value."
-
-[[exercises]]
-name = "oop3"
-path = "exercises/13_oop_basics/oop3.py"
-mode = "run"
-hint = "class Dog(Animal):"
-
-[[exercises]]
-name = "oop4"
-path = "exercises/13_oop_basics/oop4.py"
-mode = "run"
-hint = "Use @property and @price.setter."
-
-[[exercises]]
-name = "oop5"
-path = "exercises/13_oop_basics/oop5.py"
-mode = "run"
-hint = "Implement __str__ and __add__."
-
-# 3. ADVANCED / EXPERT
-# ====================
-
-[[exercises]]
-name = "adv_oop1"
-path = "exercises/14_advanced_oop/adv_oop1.py"
-mode = "run"
-hint = "Implement __str__ and __eq__."
-
-[[exercises]]
-name = "adv_oop2"
-path = "exercises/14_advanced_oop/adv_oop2.py"
-mode = "run"
-hint = "Use @property and @radius.setter."
-
-[[exercises]]
-name = "adv_oop3"
-path = "exercises/14_advanced_oop/adv_oop3.py"
-mode = "run"
-hint = "Use @classmethod and @staticmethod."
-
-[[exercises]]
-name = "iterators1"
-path = "exercises/14_advanced_oop/iterators1.py"
-mode = "run"
-hint = "Implement __iter__ and __next__."
-
-[[exercises]]
-name = "generators1"
-path = "exercises/14_advanced_oop/generators1.py"
-mode = "run"
-hint = "Use yield."
-
-[[exercises]]
-name = "concurrency1"
-path = "exercises/16_concurrency/concurrency1.py"
-mode = "run"
-hint = "Use t.start() and t.join()."
-
-[[exercises]]
-name = "asyncio1"
-path = "exercises/16_concurrency/asyncio1.py"
-mode = "run"
-hint = "Use async def and await."
-
-[[exercises]]
-name = "asyncio2"
-path = "exercises/16_concurrency/asyncio2.py"
-mode = "run"
-hint = "Use asyncio.gather()."
-
-[[exercises]]
-name = "meta1"
-path = "exercises/17_metaprogramming/meta1.py"
-mode = "run"
-hint = "Override __call__ in the metaclass."
-
-[[exercises]]
-name = "context_managers1"
-path = "exercises/17_metaprogramming/context_managers1.py"
-mode = "run"
-hint = "Implement __enter__ and __exit__."
-
-[[exercises]]
-name = "context_managers2"
-path = "exercises/17_metaprogramming/context_managers2.py"
-mode = "run"
-hint = "Use @contextmanager and yield."
-
-[[exercises]]
-name = "decorators1"
-path = "exercises/17_metaprogramming/decorators1.py"
-mode = "run"
-hint = "Return the inner function."
-
-[[exercises]]
-name = "decorators2"
-path = "exercises/17_metaprogramming/decorators2.py"
-mode = "run"
-hint = "Use 3 layers of functions."
-
-[[exercises]]
-name = "decorators3"
-path = "exercises/17_metaprogramming/decorators3.py"
-mode = "run"
-hint = "Use @functools.wraps(func)."
-
-# QUIZZES
-[[exercises]]
-name = "quiz1"
-path = "exercises/20_quizzes/quiz1.py"
-mode = "run"
-hint = "Combine dict lookups with list iteration."
-
-[[exercises]]
-name = "quiz2"
-path = "exercises/20_quizzes/quiz2.py"
-mode = "run"
-hint = "Inherit Wizard from Character."
-
-# 4. SPECIALIZED: DATA SCIENCE
-# ============================
-
-[[exercises]]
-name = "numpy1"
-path = "exercises/11_data_science/numpy1.py"
-mode = "run"
-hint = "Use np.array() and direct operator multiplication."
-
-[[exercises]]
-name = "pandas1"
-path = "exercises/11_data_science/pandas1.py"
-mode = "run"
-hint = "Use pd.Series(data) and s.sum()."
-
-[[exercises]]
-name = "pandas2"
-path = "exercises/11_data_science/pandas2.py"
-mode = "run"
-hint = "pd.DataFrame(data)"
-
-[[exercises]]
-name = "pandas3"
-path = "exercises/11_data_science/pandas3.py"
-mode = "run"
-hint = "df[df['age'] > 28]"
-
-# 5. SPECIALIZED: WEB DEVELOPMENT
-# ===============================
-
-[[exercises]]
-name = "requests1"
-path = "exercises/10_web_development/requests1.py"
-mode = "run"
-hint = "response = requests.get(...)"
-
-[[exercises]]
-name = "scraping1"
-path = "exercises/10_web_development/scraping1.py"
-mode = "run"
-hint = "Use soup.title.string and soup.a"
-
-# 7. SPECIALIZED: RECURSION & PATTERNS
-# ====================================
-
-[[exercises]]
-name = "recursion1"
-path = "exercises/19_recursion/recursion1.py"
-mode = "run"
-hint = "Define base case if n == 0."
-
-[[exercises]]
-name = "recursion2"
-path = "exercises/19_recursion/recursion2.py"
-mode = "run"
-hint = "Use isinstance(item, list)."
+hint = "Use .split(',') and '|'.join(items)."
 
 [[exercises]]
 name = "regex1"
 path = "exercises/06_strings/regex1.py"
 mode = "run"
-hint = "Use re.search(r'\\d{3}-\\d{3}-\\d{4}', text)."
+hint = "Use pattern r'\\d{3}-\\d{3}-\\d{4}' for phone numbers."
 
 [[exercises]]
 name = "regex2"
 path = "exercises/06_strings/regex2.py"
 mode = "run"
-hint = "Use capturing groups ()."
+hint = "Use r'(\\w+)@([\\w.]+)' with capturing groups."
+
+# --- 07. Modules ---
+[[exercises]]
+name = "modules1"
+path = "exercises/07_modules/modules1.py"
+mode = "run"
+hint = "Add 'import datetime' at the top."
+
+[[exercises]]
+name = "modules2"
+path = "exercises/07_modules/modules2.py"
+mode = "run"
+hint = "Add 'from my_lib import say_hello'."
+
+[[exercises]]
+name = "modules3"
+path = "exercises/07_modules/modules3.py"
+mode = "run"
+hint = "Wrap the print in 'if __name__ == \"__main__\":'."
+
+[[exercises]]
+name = "modules4"
+path = "exercises/07_modules/modules4.py"
+mode = "run"
+hint = "Define calculate_area in my_lib.py and import it."
+
+[[exercises]]
+name = "datetime1"
+path = "exercises/07_modules/datetime1.py"
+mode = "run"
+hint = "Use datetime.now() and timedelta(days=7)."
+
+[[exercises]]
+name = "itertools1"
+path = "exercises/07_modules/itertools1.py"
+mode = "run"
+hint = "Use list(itertools.permutations(...))."
+
+[[exercises]]
+name = "env_vars"
+path = "exercises/07_modules/env_vars.py"
+mode = "run"
+hint = "Use os.environ.get('MODE', 'development')."
+
+[[exercises]]
+name = "argparse1"
+path = "exercises/07_modules/argparse1.py"
+mode = "run"
+hint = "Use parser.add_argument('--count', type=int, default=1)."
 
 [[exercises]]
 name = "logging1"
 path = "exercises/07_modules/logging1.py"
 mode = "run"
-hint = "Use logging.basicConfig()."
+hint = "Use logging.basicConfig() and logging.info()."
+
+# =============================================================================
+# PHASE 2: DATA STRUCTURES
+# =============================================================================
+
+# --- 08. Data Structures ---
+[[exercises]]
+name = "lists1"
+path = "exercises/08_data_structures/lists1.py"
+mode = "run"
+hint = "Create a list with ['apple', 'banana', 'cherry']."
+
+[[exercises]]
+name = "lists2"
+path = "exercises/08_data_structures/lists2.py"
+mode = "run"
+hint = "Use numbers.append(6) to add an element."
+
+[[exercises]]
+name = "lists3"
+path = "exercises/08_data_structures/lists3.py"
+mode = "run"
+hint = "Use items.remove('paper') to remove an element."
+
+[[exercises]]
+name = "lists4"
+path = "exercises/08_data_structures/lists4.py"
+mode = "run"
+hint = "Use numbers[1:4] to slice elements at index 1, 2, 3."
+
+[[exercises]]
+name = "lists5"
+path = "exercises/08_data_structures/lists5.py"
+mode = "run"
+hint = "Use [x for x in numbers if x % 2 == 0]."
+
+[[exercises]]
+name = "tuples1"
+path = "exercises/08_data_structures/tuples1.py"
+mode = "run"
+hint = "Create a tuple with (x, y, z) syntax."
+
+[[exercises]]
+name = "sets1"
+path = "exercises/08_data_structures/sets1.py"
+mode = "run"
+hint = "Use {1, 2, 3} or set() and .add() method."
+
+[[exercises]]
+name = "dicts1"
+path = "exercises/08_data_structures/dicts1.py"
+mode = "run"
+hint = "Create a dict with {'name': 'Alice', 'age': 30}."
+
+[[exercises]]
+name = "dicts2"
+path = "exercises/08_data_structures/dicts2.py"
+mode = "run"
+hint = "Use prices['orange'] = 0.80 to add a key."
+
+[[exercises]]
+name = "dicts3"
+path = "exercises/08_data_structures/dicts3.py"
+mode = "run"
+hint = "Use 'for key, value in dict.items():' to iterate."
+
+[[exercises]]
+name = "dicts4"
+path = "exercises/08_data_structures/dicts4.py"
+mode = "run"
+hint = "Use dict.get('key', default_value) for safe access."
+
+[[exercises]]
+name = "dicts5"
+path = "exercises/08_data_structures/dicts5.py"
+mode = "run"
+hint = "Use dict1 | dict2 to merge dictionaries."
+
+[[exercises]]
+name = "list_comp"
+path = "exercises/08_data_structures/list_comp.py"
+mode = "run"
+hint = "Use [x**2 for x in numbers]."
+
+[[exercises]]
+name = "dict_comp"
+path = "exercises/08_data_structures/dict_comp.py"
+mode = "run"
+hint = "Use {k: v for k, v in items}."
+
+[[exercises]]
+name = "collections1"
+path = "exercises/08_data_structures/collections1.py"
+mode = "run"
+hint = "Use Counter(text) to count characters."
+
+[[exercises]]
+name = "collections2"
+path = "exercises/08_data_structures/collections2.py"
+mode = "run"
+hint = "Use defaultdict(list) to auto-create lists."
+
+[[exercises]]
+name = "heapq1"
+path = "exercises/08_data_structures/heapq1.py"
+mode = "run"
+hint = "Use heapq.nsmallest(n, iterable)."
+
+[[exercises]]
+name = "linked_list1"
+path = "exercises/08_data_structures/linked_list1.py"
+mode = "run"
+hint = "Set node.next = new_node to link nodes."
+
+[[exercises]]
+name = "linked_list2"
+path = "exercises/08_data_structures/linked_list2.py"
+mode = "run"
+hint = "Set both node.next and node.prev for doubly linked."
+
+# =============================================================================
+# PHASE 3: ERROR HANDLING & FILES
+# =============================================================================
+
+# --- 12. Error Handling ---
+[[exercises]]
+name = "error1"
+path = "exercises/12_error_handling/error1.py"
+mode = "run"
+hint = "Wrap the division in try/except ZeroDivisionError."
+
+[[exercises]]
+name = "error2"
+path = "exercises/12_error_handling/error2.py"
+mode = "run"
+hint = "Define 'class NegativeValueError(Exception): pass' and raise it."
+
+[[exercises]]
+name = "error3"
+path = "exercises/12_error_handling/error3.py"
+mode = "run"
+hint = "Add a finally: block that calls cleanup()."
+
+# --- 15. Files ---
+[[exercises]]
+name = "files1"
+path = "exercises/15_files/files1.py"
+mode = "run"
+hint = "Use 'with open(path, 'w') as f:' and f.write()."
+
+[[exercises]]
+name = "json1"
+path = "exercises/15_files/json1.py"
+mode = "run"
+hint = "Use json.dumps(dict) and json.loads(string)."
+
+[[exercises]]
+name = "csv1"
+path = "exercises/15_files/csv1.py"
+mode = "run"
+hint = "Use csv.reader(f) and iterate over rows."
+
+[[exercises]]
+name = "pathlib1"
+path = "exercises/15_files/pathlib1.py"
+mode = "run"
+hint = "Use Path('folder') / 'file.txt' to join paths."
+
+# =============================================================================
+# PHASE 4: OBJECT-ORIENTED PROGRAMMING
+# =============================================================================
+
+# --- 13. OOP Basics ---
+[[exercises]]
+name = "oop1"
+path = "exercises/13_oop_basics/oop1.py"
+mode = "run"
+hint = "Add 'def __init__(self, name): self.name = name'."
+
+[[exercises]]
+name = "oop2"
+path = "exercises/13_oop_basics/oop2.py"
+mode = "run"
+hint = "Define methods that use self.value."
+
+[[exercises]]
+name = "oop3"
+path = "exercises/13_oop_basics/oop3.py"
+mode = "run"
+hint = "Use 'class Dog(Animal):' to inherit."
+
+[[exercises]]
+name = "oop4"
+path = "exercises/13_oop_basics/oop4.py"
+mode = "run"
+hint = "Use @property decorator and @name.setter."
+
+[[exercises]]
+name = "oop5"
+path = "exercises/13_oop_basics/oop5.py"
+mode = "run"
+hint = "Implement __str__, __add__, and __eq__ methods."
+
+# --- 14. Advanced OOP ---
+[[exercises]]
+name = "adv_oop1"
+path = "exercises/14_advanced_oop/adv_oop1.py"
+mode = "run"
+hint = "Implement __str__ and __eq__ magic methods."
+
+[[exercises]]
+name = "adv_oop2"
+path = "exercises/14_advanced_oop/adv_oop2.py"
+mode = "run"
+hint = "Use @property for getter and @x.setter for setter."
+
+[[exercises]]
+name = "adv_oop3"
+path = "exercises/14_advanced_oop/adv_oop3.py"
+mode = "run"
+hint = "Use @classmethod and @staticmethod decorators."
+
+[[exercises]]
+name = "iterators1"
+path = "exercises/14_advanced_oop/iterators1.py"
+mode = "run"
+hint = "Implement __iter__ (return self) and __next__ methods."
+
+[[exercises]]
+name = "generators1"
+path = "exercises/14_advanced_oop/generators1.py"
+mode = "run"
+hint = "Use 'yield value' to produce values one at a time."
 
 [[exercises]]
 name = "design_patterns1"
 path = "exercises/14_advanced_oop/design_patterns1.py"
 mode = "run"
-hint = "Use __new__ for Singleton."
+hint = "Cache the instance in __new__ to return the same object."
 
 [[exercises]]
 name = "design_patterns2"
 path = "exercises/14_advanced_oop/design_patterns2.py"
 mode = "run"
-hint = "Return specific class instance."
+hint = "Return different class instances based on the type parameter."
+
+# =============================================================================
+# PHASE 5: ADVANCED TOPICS
+# =============================================================================
+
+# --- 17. Metaprogramming ---
+[[exercises]]
+name = "decorators1"
+path = "exercises/17_metaprogramming/decorators1.py"
+mode = "run"
+hint = "The wrapper function should call func() and return inner."
+
+[[exercises]]
+name = "decorators2"
+path = "exercises/17_metaprogramming/decorators2.py"
+mode = "run"
+hint = "Use 3 nested functions: outer(arg) -> decorator(func) -> wrapper(*args)."
+
+[[exercises]]
+name = "decorators3"
+path = "exercises/17_metaprogramming/decorators3.py"
+mode = "run"
+hint = "Add @functools.wraps(func) above the wrapper function."
+
+[[exercises]]
+name = "context_managers1"
+path = "exercises/17_metaprogramming/context_managers1.py"
+mode = "run"
+hint = "Implement __enter__ (return self) and __exit__ methods."
+
+[[exercises]]
+name = "context_managers2"
+path = "exercises/17_metaprogramming/context_managers2.py"
+mode = "run"
+hint = "Add @contextmanager decorator and use yield."
+
+[[exercises]]
+name = "meta1"
+path = "exercises/17_metaprogramming/meta1.py"
+mode = "run"
+hint = "In __call__, check if instance exists before creating new one."
+
+# --- 16. Concurrency ---
+[[exercises]]
+name = "concurrency1"
+path = "exercises/16_concurrency/concurrency1.py"
+mode = "run"
+hint = "Call t.start() to begin and t.join() to wait."
+
+[[exercises]]
+name = "asyncio1"
+path = "exercises/16_concurrency/asyncio1.py"
+mode = "run"
+hint = "Use 'async def' and 'await asyncio.sleep()'."
+
+[[exercises]]
+name = "asyncio2"
+path = "exercises/16_concurrency/asyncio2.py"
+mode = "run"
+hint = "Use 'await asyncio.gather(task1, task2, task3)'."
+
+# --- 18. Type Hints ---
+[[exercises]]
+name = "typing1"
+path = "exercises/18_typing/typing1.py"
+mode = "run"
+hint = "Add type hints: 'def func(a: int, b: int) -> int:'."
+
+[[exercises]]
+name = "typing2"
+path = "exercises/18_typing/typing2.py"
+mode = "run"
+hint = "Use List[str] and Dict[str, int] from typing module."
+
+[[exercises]]
+name = "typing3"
+path = "exercises/18_typing/typing3.py"
+mode = "run"
+hint = "Use Optional[int] for maybe-None and Union[int, str] for either."
+
+[[exercises]]
+name = "typing4"
+path = "exercises/18_typing/typing4.py"
+mode = "run"
+hint = "Use Callable[[int], int] for function types."
+
+# --- 19. Testing & Recursion ---
+[[exercises]]
+name = "testing1"
+path = "exercises/19_testing/testing1.py"
+mode = "run"
+hint = "Use 'assert condition, message' to test."
+
+[[exercises]]
+name = "recursion1"
+path = "exercises/19_recursion/recursion1.py"
+mode = "run"
+hint = "Add base case (if n == 0) and recursive case."
+
+[[exercises]]
+name = "recursion2"
+path = "exercises/19_recursion/recursion2.py"
+mode = "run"
+hint = "Check isinstance(item, list) and recurse, else append."
+
+# --- 20. Quizzes ---
+[[exercises]]
+name = "quiz1"
+path = "exercises/20_quizzes/quiz1.py"
+mode = "run"
+hint = "Combine loops, dict lookups, and conditionals."
+
+[[exercises]]
+name = "quiz2"
+path = "exercises/20_quizzes/quiz2.py"
+mode = "run"
+hint = "Use inheritance: class Wizard(Character)."
+
+# =============================================================================
+# PHASE 6: SPECIALIZED DOMAINS
+# =============================================================================
+
+# --- 10. Web Development ---
+[[exercises]]
+name = "requests1"
+path = "exercises/10_web_development/requests1.py"
+mode = "run"
+hint = "Use requests.get(url) and response.json()."
+
+[[exercises]]
+name = "scraping1"
+path = "exercises/10_web_development/scraping1.py"
+mode = "run"
+hint = "Use soup.title.string and soup.find('a')."
 
 [[exercises]]
 name = "fastapi1"
 path = "exercises/10_web_development/fastapi1.py"
 mode = "run"
-hint = "Use the @app.get decorator."
+hint = "Use @app.get('/') decorator."
 
 [[exercises]]
 name = "fastapi2"
 path = "exercises/10_web_development/fastapi2.py"
 mode = "run"
-hint = "Define the route with {item_id}."
+hint = "Use @app.get('/items/{item_id}') for path parameters."
 
-# 6. SPECIALIZED: AI ENGINEERING
-# ==============================
+# --- 11. Data Science ---
+[[exercises]]
+name = "numpy1"
+path = "exercises/11_data_science/numpy1.py"
+mode = "run"
+hint = "Use np.array() and element-wise operations."
 
+[[exercises]]
+name = "pandas1"
+path = "exercises/11_data_science/pandas1.py"
+mode = "run"
+hint = "Use pd.Series(data) and series.sum()."
+
+[[exercises]]
+name = "pandas2"
+path = "exercises/11_data_science/pandas2.py"
+mode = "run"
+hint = "Use pd.DataFrame(dict) to create a DataFrame."
+
+[[exercises]]
+name = "pandas3"
+path = "exercises/11_data_science/pandas3.py"
+mode = "run"
+hint = "Use df[df['column'] > value] for boolean indexing."
+
+# --- 09. AI Engineering ---
 [[exercises]]
 name = "openai1"
 path = "exercises/09_ai_engineering/01_foundations/openai1.py"
 mode = "run"
-hint = "Uncomment the os.environ line to set the dummy key."
+hint = "Set OPENAI_API_KEY environment variable or pass to client."
 
 [[exercises]]
 name = "ollama1"
 path = "exercises/09_ai_engineering/01_foundations/ollama1.py"
 mode = "run"
-hint = "Set model = 'llama3' or 'tinyllama'."
+hint = "Set model to 'llama3' or 'tinyllama'."
 
 [[exercises]]
 name = "rag1"
 path = "exercises/09_ai_engineering/01_foundations/rag1.py"
 mode = "run"
-hint = "Use numpy.dot and numpy.linalg.norm."
+hint = "Use np.dot() for dot product and np.linalg.norm() for magnitude."
 
 [[exercises]]
 name = "tool1"
 path = "exercises/09_ai_engineering/02_tool_calling/tool1.py"
 mode = "run"
-hint = "Use 'type': 'object' and define properties for 'location'."
+hint = "Define 'properties' dict with parameter schemas."
 
 [[exercises]]
 name = "tool2"
 path = "exercises/09_ai_engineering/02_tool_calling/tool2.py"
 mode = "run"
-hint = "import json; args = json.loads(args_str)"
+hint = "Use json.loads(args_string) to parse arguments."
 
 [[exercises]]
 name = "agent1"
 path = "exercises/09_ai_engineering/03_agents_hand/agent1.py"
 mode = "run"
-hint = "Use a while loop."
+hint = "Use while loop until action is 'finish'."
 
 [[exercises]]
 name = "agent2"
 path = "exercises/09_ai_engineering/03_agents_hand/agent2.py"
 mode = "run"
-hint = "Use re.search(r'Action: (.*)', ...)"
+hint = "Use re.search(r'Action: (.+)', text) to extract."
 
 [[exercises]]
 name = "mcp1"
@@ -722,4 +730,4 @@ hint = "Check request['method'] and return JSON-RPC response."
 name = "mcp2"
 path = "exercises/09_ai_engineering/04_mcp/mcp2.py"
 mode = "run"
-hint = "Set self.available_tools list."
+hint = "Store tools in self.available_tools list."
