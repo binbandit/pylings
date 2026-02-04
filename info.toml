@@ -626,9 +626,10 @@ mode = "run"
 hint = "Use isinstance(item, list)."
 
 [[exercises]]
-hint = "Use re.search(r'\d{3}', text)."name = "regex1"
+name = "regex1"
 path = "exercises/06_strings/regex1.py"
 mode = "run"
+hint = "Use re.search(r'\\d{3}-\\d{3}-\\d{4}', text)."
 
 [[exercises]]
 name = "regex2"
