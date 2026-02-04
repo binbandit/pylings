@@ -38,7 +38,7 @@ hint = "Assign the value 10 to x."
 name = "input1"
 path = "exercises/02_variables/input1.py"
 mode = "run"
-hint = "Assign the string 'Alice' to user_name."
+hint = "Use input(\"Enter your name: \") to get user input."
 
 # --- 03. Functions ---
 [[exercises]]
